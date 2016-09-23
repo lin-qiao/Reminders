@@ -32,7 +32,7 @@ todo.controller('todoCtr',['$scope',function ($scope) {
   }
   $scope.currentList=function (i) {
      $scope.current=$scope.todoLists[i];
-     localStorage.id=angualr.toJson(i);
+     localStorage.id=angular.toJson(i);
   }
   $scope.addItem=function (items) {
     var newItem={name:'事项'+(items.length+1),state:false};
