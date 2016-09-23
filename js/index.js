@@ -3,7 +3,12 @@ todo.controller('todoCtr',['$scope',function ($scope) {
   $scope.todoLists=localStorage.todoList?
   angular.fromJson(localStorage.todoList)
   :[];
-  $scope.current=$scope.todoLists.length?$scope.todoLists[0]:null;
+  
+  $scope.id=localStorage.id?
+  angular.fromJson(localStorage.id):0;
+  
+  $scope.current=$scope.todoLists.length?$scope.todoLists[$scope.id]:null;
+  
   $scope.saveDate=function () {
     localStorage.todoList=angular.toJson($scope.todoLists);
   }
@@ -28,6 +33,7 @@ todo.controller('todoCtr',['$scope',function ($scope) {
   }
   $scope.currentList=function (i) {
      $scope.current=$scope.todoLists[i];
+     $scope.id=angular.toJson(i);
   }
   $scope.addItem=function (items) {
     var newItem={name:'事项'+(items.length+1),state:false};
